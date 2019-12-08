@@ -1,4 +1,4 @@
-package papari;
+package fidaki;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;

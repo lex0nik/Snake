@@ -1,4 +1,4 @@
-package papari;
+package fidaki;
 import java.awt.Color;
 
 import javax.swing.JFrame;
