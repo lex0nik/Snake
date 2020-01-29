@@ -16,11 +16,11 @@ import javax.swing.Timer;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	private ImageIcon titleImage;
-	private int[] snakexlength = new int[750];
-	private int[] snakeylength = new int[750];
-	private int[] enemyxpos = {25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625,650,675,700,725,750,775,800,825,850};
-	private int[] enemyypos = {75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625};
-	private ImageIcon enemyimage;
+	private int[] fidakiX = new int[750];
+	private int[] fidakiY = new int[750];
+	private int[] adipalosX = {25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625,650,675,700,725,750,775,800,825,850};
+	private int[] adipalosY = {75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625};
+	private ImageIcon adipalosimage;
 	private int score=0;
 	private Random random = new Random();
 	private int xpos = random.nextInt(34);
@@ -30,18 +30,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	private boolean up = false;
 	private boolean down = false;
 	
-	private ImageIcon downmouth;
-	private ImageIcon rightmouth;
-	private ImageIcon leftmouth;
-	private ImageIcon upmouth;
+	private ImageIcon katwstoma;
+	private ImageIcon deksiastoma;
+	private ImageIcon aristerastoma;
+	private ImageIcon panwstoma;
 	int moves=0;
 	
 	
-	private int lengthofsnake = 3;
+	private int lengthFidaki = 3;
 	
 	private Timer timer;
 	private int delay = 100;
-	private ImageIcon snakeimage;
+	private ImageIcon fidakiimage;
 	
 	
 	public Gameplay() {
@@ -59,13 +59,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	public void paint(Graphics g){
 		
 		if(moves==0) {
-			snakexlength[2]=50;
-			snakexlength[1]=75;
-			snakexlength[0]=100;
+			fidakiX[2]=50;
+			fidakiX[1]=75;
+			fidakiX[0]=100;
 		
-			snakeylength[2]=100;
-			snakeylength[1]=100;
-			snakeylength[0]=100;
+			fidakiY[2]=100;
+			fidakiY[1]=100;
+			fidakiY[0]=100;
 		
 		}
 		
@@ -87,51 +87,51 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("arial", Font.PLAIN, 14));
-		g.drawString("Length: "+ lengthofsnake, 780, 50);
+		g.drawString("Length: "+ lengthFidaki, 780, 50);
 		
-		rightmouth = new ImageIcon("rightmouth.png");
-		rightmouth.paintIcon(this, g, snakexlength[0], snakeylength[0]);
+		deksiastoma = new ImageIcon("deksiastoma.png");
+		deksiastoma.paintIcon(this, g, fidakiX[0], fidakiY[0]);
 		
-		for(int a=0;a<lengthofsnake;a++) {
+		for(int a=0;a<lengthFidaki;a++) {
 			if(a==0 && right) {
-				rightmouth = new ImageIcon("rightmouth.png");
-				rightmouth.paintIcon(this, g, snakexlength[a], snakeylength[a]);
+				deksiastoma = new ImageIcon("deksiastoma.png");
+				deksiastoma.paintIcon(this, g, fidakiX[a], fidakiY[a]);
 			}
 			
 			if(a==0 && left) {
-				leftmouth = new ImageIcon("leftmouth.png");
-				leftmouth.paintIcon(this, g, snakexlength[a], snakeylength[a]);
+				aristerastoma = new ImageIcon("aristerastoma.png");
+				aristerastoma.paintIcon(this, g, fidakiX[a], fidakiY[a]);
 			}
 			
 			if(a==0 && up) {
-				upmouth = new ImageIcon("upmouth.png");
-				upmouth.paintIcon(this, g, snakexlength[a], snakeylength[a]);
+				panwstoma = new ImageIcon("panwstoma.png");
+				panwstoma.paintIcon(this, g, fidakiX[a], fidakiY[a]);
 			}
 			
 			if(a==0 && down) {
-				downmouth = new ImageIcon("downmouth.png");
-				downmouth.paintIcon(this, g, snakexlength[a], snakeylength[a]);
+				katwstoma = new ImageIcon("katwstoma.png");
+				katwstoma.paintIcon(this, g, fidakiX[a], fidakiY[a]);
 			}
 			
 			if(a!=0) {
-				snakeimage = new ImageIcon("snakeimage.png");
-				snakeimage.paintIcon(this, g, snakexlength[a], snakeylength[a]);
+				fidakiimage = new ImageIcon("fidakiimage.png");
+				fidakiimage.paintIcon(this, g, fidakiX[a], fidakiY[a]);
 			}
 			
 		}
 		
-		enemyimage = new ImageIcon("enemy.png");
-		if((enemyxpos[xpos]==snakexlength[0]) && (enemyypos[ypos]==snakeylength[0])) {
+		adipalosimage = new ImageIcon("enemy.png");
+		if((adipalosX[xpos]==fidakiX[0]) && (adipalosY[ypos]==fidakiY[0])) {
 			score++;
-			lengthofsnake++;
+			lengthFidaki++;
 			xpos=random.nextInt(34);
 			ypos=random.nextInt(23);
 		}	
-		enemyimage.paintIcon(this, g, enemyxpos[xpos], enemyypos[ypos]);
+		adipalosimage.paintIcon(this, g, adipalosX[xpos], adipalosY[ypos]);
 		
 		
-		for(int b = 1; b<lengthofsnake; b++) {
-			if(snakexlength[b] == snakexlength[0]  &&  snakeylength[b]==snakeylength[0]) {
+		for(int b = 1; b<lengthFidaki; b++) {
+			if(fidakiX[b] == fidakiX[0]  &&  fidakiY[b]==fidakiY[0]) {
 				right=false;
 				left=false;
 				up=false;
@@ -155,18 +155,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		timer.start();
 		if(right) {
-			for(int r = lengthofsnake-1;r>=0;r--) {
-				snakeylength[r+1] = snakeylength[r];
+			for(int r = lengthFidaki-1;r>=0;r--) {
+				fidakiY[r+1] = fidakiY[r];
 			}
-			for(int r = lengthofsnake;r>=0;r--) {
+			for(int r = lengthFidaki;r>=0;r--) {
 				if(r==0) {
-					snakexlength[r]=snakexlength[r] + 25; 
+					fidakiX[r]=fidakiX[r] + 25; 
 				}
 				else {
-					snakexlength[r]=snakexlength[r-1]; 
+					fidakiX[r]=fidakiX[r-1]; 
 				}
-				if(snakexlength[r]>850) {
-					snakexlength[r]=25;
+				if(fidakiX[r]>850) {
+					fidakiX[r]=25;
 				}
 				
 			}
@@ -174,18 +174,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		}
 		
 		if(left) {
-			for(int r = lengthofsnake-1;r>=0;r--) {
-				snakeylength[r+1] = snakeylength[r];
+			for(int r = lengthFidaki-1;r>=0;r--) {
+				fidakiY[r+1] = fidakiY[r];
 			}
-			for(int r = lengthofsnake;r>=0;r--) {
+			for(int r = lengthFidaki;r>=0;r--) {
 				if(r==0) {
-					snakexlength[r]=snakexlength[r] - 25; 
+					fidakiX[r]=fidakiX[r] - 25; 
 				}
 				else {
-					snakexlength[r]=snakexlength[r-1]; 
+					fidakiX[r]=fidakiX[r-1]; 
 				}
-				if(snakexlength[r]<25) {
-					snakexlength[r]=850;
+				if(fidakiX[r]<25) {
+					fidakiX[r]=850;
 				}
 				
 			}
@@ -193,18 +193,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		}
 		
 		if(down) {
-			for(int r = lengthofsnake-1;r>=0;r--) {
-				snakexlength[r+1] = snakexlength[r];
+			for(int r = lengthFidaki-1;r>=0;r--) {
+				fidakiX[r+1] = fidakiX[r];
 			}
-			for(int r = lengthofsnake;r>=0;r--) {
+			for(int r = lengthFidaki;r>=0;r--) {
 				if(r==0) {
-					snakeylength[r]=snakeylength[r] + 25; 
+					fidakiY[r]=fidakiY[r] + 25; 
 				}
 				else {
-					snakeylength[r]=snakeylength[r-1]; 
+					fidakiY[r]=fidakiY[r-1]; 
 				}
-				if(snakeylength[r]>625) {
-					snakeylength[r]=75;
+				if(fidakiY[r]>625) {
+					fidakiY[r]=75;
 				}
 				
 			}
@@ -212,18 +212,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		}
 		
 		if(up) {
-			for(int r = lengthofsnake-1;r>=0;r--) {
-				snakexlength[r+1] = snakexlength[r];
+			for(int r = lengthFidaki-1;r>=0;r--) {
+				fidakiX[r+1] = fidakiX[r];
 			}
-			for(int r = lengthofsnake;r>=0;r--) {
+			for(int r = lengthFidaki;r>=0;r--) {
 				if(r==0) {
-					snakeylength[r]=snakeylength[r] - 25; 
+					fidakiY[r]=fidakiY[r] - 25; 
 				}
 				else {
-					snakeylength[r]=snakeylength[r-1]; 
+					fidakiY[r]=fidakiY[r-1]; 
 				}
-				if(snakeylength[r]<75) {
-					snakeylength[r]=625;
+				if(fidakiY[r]<75) {
+					fidakiY[r]=625;
 				}
 				
 			}
@@ -245,7 +245,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 			moves=0;
 			score=0;
-			lengthofsnake=3;
+			lengthFidaki=3;
 			repaint();
 		}
 		
