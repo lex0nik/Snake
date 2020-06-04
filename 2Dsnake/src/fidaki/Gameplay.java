@@ -93,7 +93,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		deksiastoma.paintIcon(this, g, fidakiX[0], fidakiY[0]);
 		
 		for(int a=0;a<lengthFidaki;a++) {
-			if(a==0 && right) {
+			if(a == 0 && right) {
 				deksiastoma = new ImageIcon("deksiastoma.png");
 				deksiastoma.paintIcon(this, g, fidakiX[a], fidakiY[a]);
 			}
